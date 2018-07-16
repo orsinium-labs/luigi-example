@@ -1,4 +1,5 @@
-import time
+from time import sleep
+from datetime import date
 
 import luigi
 
@@ -17,7 +18,7 @@ class GenerateTask(luigi.Task):
         )
 
     def run(self):
-        time.sleep(1)
+        sleep(1)
         self.input().write('v{}'.format(self.num))
 
     def output(self):
@@ -25,19 +26,21 @@ class GenerateTask(luigi.Task):
 
 
 class ConcatenateTask(luigi.Task):
+    date = luigi.DateParameter(default=date.today())
+
     def requires(self):
         for i in range(5):
             yield GenerateTask(i + 1)
 
     def run(self):
-        time.sleep(1)
+        sleep(1)
         values = []
         for value in self.input():
             values.append(value)
         self.output().write(' '.join(values))
 
     def output(self):
-        return luigi.LocalTarget('output_{}.txt'.format(self.num))
+        return luigi.LocalTarget('output_{}.txt'.format(self.count))
 
 
 TAIL = ConcatenateTask

@@ -1,1 +1,1 @@
-pipenv run luigi --module tasks TAIL
+pipenv run luigi --module tasks ConcatenateTask
