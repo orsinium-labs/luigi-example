@@ -1,25 +1,22 @@
 version: '3'
 services:
-  # services
   lx-mongo:
     image: mongo:3.2-jessie
     restart: always
     environment:
       MONGO_INITDB_DATABASE: luigi
   lx-luigid:
-    image: axiom/docker-luigi:latest
-    volumes:
-      - ./project/config.toml:/etc/luigi/luigi.toml
-      - ./project/logging.conf:/etc/luigi/logging.conf
-
-  # project
-  lx-project:
     build: .
     ports:
-      - 127.0.0.1:9881:9881
+      - 127.0.0.1:8082:8082
     volumes:
       - ./project:/opt/project
-    command: bash -c "pipenv sync && bash run.sh"
+    command: bash -c "pipenv sync && bash server.sh"
+  lx-project:
+    build: .
+    volumes:
+      - ./project:/opt/project
+    command: bash -c "pipenv sync && bash client.sh"
     depends_on:
       - lx-mongo
-      - lx-postgres
+      - lx-luigid
