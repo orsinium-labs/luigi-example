@@ -5,9 +5,12 @@ services:
     image: mongo:3.2-jessie
     restart: always
     environment:
-      MONGO_INITDB_DATABASE: cindicator
+      MONGO_INITDB_DATABASE: luigi
   lx-luigid:
     image: axiom/docker-luigi:latest
+    volumes:
+      - ./project/config.toml:/etc/luigi/luigi.toml
+      - ./project/logging.conf:/etc/luigi/logging.conf
 
   # project
   lx-project:
