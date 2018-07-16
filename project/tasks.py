@@ -40,7 +40,7 @@ class ConcatenateTask(luigi.Task):
         self.output().write(' '.join(values))
 
     def output(self):
-        return luigi.LocalTarget('output_{}.txt'.format(self.count))
+        return luigi.LocalTarget('output_{}.txt'.format(self.date))
 
 
 TAIL = ConcatenateTask
