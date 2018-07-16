@@ -1,0 +1,9 @@
+[core]
+logging_conf_file = "logging.conf"
+default-scheduler-host = "lx-luigid"
+
+[mongo]
+host = "lx-mongo"
+port = 27017
+index = "luigi"
+collection = "hello_world"

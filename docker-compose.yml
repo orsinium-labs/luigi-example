@@ -19,7 +19,7 @@ services:
       - 127.0.0.1:9881:9881
     volumes:
       - ./project:/opt/project
-    command: bash -c "pipenv sync --dev && pipenv run python worker.py"
+    command: bash -c "pipenv sync && bash run.sh"
     depends_on:
       - lx-mongo
       - lx-postgres
