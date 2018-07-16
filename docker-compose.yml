@@ -1,0 +1,22 @@
+version: '3'
+services:
+  # services
+  lx-mongo:
+    image: mongo:3.2-jessie
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: cindicator
+  lx-luigid:
+    image: axiom/docker-luigi:latest
+
+  # project
+  lx-project:
+    build: .
+    ports:
+      - 127.0.0.1:9881:9881
+    volumes:
+      - ./project:/opt/project
+    command: bash -c "pipenv sync --dev && pipenv run python worker.py"
+    depends_on:
+      - lx-mongo
+      - lx-postgres

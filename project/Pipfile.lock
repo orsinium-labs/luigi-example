@@ -1,0 +1,24 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "df12eca7b80137ad5c5ccec52232a5562d5250a77d7ebd8a090a9ca1380016a4"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.5"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "luigi": {
+            "git": "https://github.com/orsinium/luigi.git"
+        }
+    },
+    "develop": {}
+}
