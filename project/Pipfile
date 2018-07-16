@@ -8,6 +8,6 @@ python_version = "3.6"
 
 [packages]
 pymongo = "*"
-luigi = {git = "https://github.com/orsinium/luigi.git"}
+luigi = {git = "https://github.com/orsinium/luigi.git", extras = ["toml"]}
 
 [dev-packages]
