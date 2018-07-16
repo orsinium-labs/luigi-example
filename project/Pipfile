@@ -4,9 +4,10 @@ url = "https://pypi.org/simple"
 name = "pypi"
 
 [requires]
-python_version = "3.5"
+python_version = "3.6"
 
 [packages]
+pymongo = "*"
 luigi = {git = "https://github.com/orsinium/luigi.git"}
 
 [dev-packages]
