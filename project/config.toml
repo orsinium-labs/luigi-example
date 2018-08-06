@@ -1,5 +1,4 @@
 [core]
-logging_conf_file = "logging.conf"
 default-scheduler-host = "lx-luigid"
 
 [mongo]
@@ -15,3 +14,42 @@ not_run = 25
 task_failed = 30
 scheduling_error = 35
 unhandled_exception = 40
+
+
+[logging]
+version = 1
+disable_existing_loggers = true
+
+[logging.formatters.simple]
+format = "{levelname:8} {asctime} {module}:{lineno} {message}"
+style = "{"
+datefmt = "%Y-%m-%d %H:%M:%S"
+
+[logging.handlers.console]
+level = "DEBUG"
+class = "logging.StreamHandler"
+formatter = "simple"
+
+[logging.loggers.project]
+handlers = ["console"]
+level = "DEBUG"
+disabled = false
+propagate = false
+
+[logging.loggers.luigi-interface]
+handlers = ["console"]
+level = "INFO"
+disabled = false
+propagate = false
+
+[logging.loggers."luigi.server"]
+handlers = ["console"]
+level = "INFO"
+disabled = false
+propagate = false
+
+[logging.loggers."tornado.access"]
+handlers = ["console"]
+level = "INFO"
+disabled = false
+propagate = false
